@@ -100,8 +100,8 @@ io.on('connection', (socket) => {
             roomCode,
             players: room.players,
             settings: room.settings,
-            waitingForPlayers: room.players.length < 2,
-            canStart: room.players.length >= 2
+            waitingForPlayers: false,
+            canStart: room.players.length >= 1
         });
 
         console.log(`Oda oluşturuldu: ${roomCode} - ${playerName}`);
@@ -145,8 +145,8 @@ io.on('connection', (socket) => {
             roomCode: code,
             players: room.players,
             settings: room.settings,
-            waitingForPlayers: room.players.length < 2,
-            canStart: room.players.length >= 2
+            waitingForPlayers: false,
+            canStart: room.players.length >= 1
         });
 
         console.log(`${playerName} odaya katıldı: ${code} (${room.players.length}/${MAX_PLAYERS})`);
@@ -177,8 +177,8 @@ io.on('connection', (socket) => {
                 roomCode: currentRoom,
                 players: room.players,
                 settings: room.settings,
-                waitingForPlayers: room.players.length < 2,
-                canStart: room.players.length >= 2 && room.players.every(p => p.ready)
+                waitingForPlayers: false,
+                canStart: room.players.length >= 1 && room.players.every(p => p.ready)
             });
 
             // Tüm oyuncular hazırsa ve host başlatabilir
